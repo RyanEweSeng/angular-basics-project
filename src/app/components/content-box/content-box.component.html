@@ -1,7 +1,7 @@
-<div class="content-item" [ngStyle]="getContentBorderStyle()">
+<div class="content-item" [ngStyle]="getContentBorderStyle()" (focusout)="onLoseFocus()">
   <h1>{{ content.name }}</h1>
   <p>{{ content.text }}</p>
-  <button [ngStyle]="getButtonStyle()" (click)="toggleBorder()">
+  <button [ngStyle]="getButtonStyle()" (click)="onButtonPress()">
     Set {{ content.color }}
   </button>
 </div>

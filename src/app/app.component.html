@@ -1,10 +1,10 @@
-<main>
-  <header class="title">Angular Basics Practice</header>
-  <div class="container">
+<div class="app-container">
+  <header class="title" [ngStyle]="getTitleStyle()">Angular Basics Practice</header>
+  <div class="content-container">
     <app-content-box
       *ngFor="let content of dummyContent"
       [content]="content"
-      [ngStyle]="{'flex': '50%'}"
+      (emitColorUpdate)="handleColorUpdate($event)"
     />
   </div>
-</main>
+</div>

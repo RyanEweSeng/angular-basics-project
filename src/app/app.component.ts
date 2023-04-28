@@ -9,6 +9,18 @@ import { Content } from './interfaces/content.interface';
 export class AppComponent {
   title = 'angular-basics-project';
 
+  textColor: string = 'black';
+
+  handleColorUpdate(newColor: string) {
+    this.textColor = newColor;
+  }
+
+  getTitleStyle() {
+    return {
+      'color': this.textColor,
+    };
+  }
+
   dummyContent: Content[] = [
     {
       name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. (1)",

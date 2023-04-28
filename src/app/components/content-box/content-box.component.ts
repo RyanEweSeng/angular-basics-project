@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Content } from 'src/app/interfaces/content.interface';
 
 @Component({
@@ -8,11 +8,30 @@ import { Content } from 'src/app/interfaces/content.interface';
 })
 export class ContentBoxComponent {
   @Input() content!: Content;
+  @Output() emitColorUpdate = new EventEmitter<string>();
 
   isSelected: boolean = false;
 
-  toggleBorder() {
+  // updates the title color of the app
+  onButtonPress() {
     this.isSelected = !this.isSelected;
+    let color = this.content.color;
+
+    if (!this.isSelected) {
+      color = 'black';
+    }
+
+    this.emitColorUpdate.emit(color);
+  }
+
+  // when we lose focus of all content boxes, we default to black color
+  onLoseFocus() {
+    if (this.isSelected) {
+      this.isSelected = !this.isSelected;
+      let color = 'black';
+
+      this.emitColorUpdate.emit(color);
+    }
   }
 
   getContentBorderStyle() {
