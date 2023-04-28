@@ -24,8 +24,8 @@ export class ContentBoxComponent {
     }
 
     return {
-      'border': '2px solid white',
-      'box-shadow':'5px 5px 0px white',
+      'border': '2px solid transparent',
+      'box-shadow':'5px 5px 0px transparent',
     };
   }
 
