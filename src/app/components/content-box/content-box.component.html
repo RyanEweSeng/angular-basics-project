@@ -1,0 +1,7 @@
+<div class="content-item" [ngStyle]="getContentBorderStyle()">
+  <h1>{{ content.name }}</h1>
+  <p>{{ content.text }}</p>
+  <button [ngStyle]="getButtonStyle()" (click)="toggleBorder()">
+    Set {{ content.color }}
+  </button>
+</div>
