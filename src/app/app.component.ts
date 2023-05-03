@@ -1,24 +1,32 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChildren } from '@angular/core';
 import { Content } from './interfaces/content.interface';
+import { ContentBoxComponent } from './components/content-box/content-box.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  @ViewChildren(ContentBoxComponent) children!: QueryList<ContentBoxComponent>;
+  
   title = 'angular-basics-project';
 
-  textColor: string = 'black';
+  currContent: Content = {
+    name: "",
+    text: "",
+    color: "",
+  };
 
-  handleColorUpdate(newColor: string) {
-    this.textColor = newColor;
+  ngAfterViewInit(): void {
+    
   }
 
-  getTitleStyle() {
-    return {
-      'color': this.textColor,
-    };
+  handleContentChange(newContent: Content) {
+    this.currContent = newContent;
+    this.children.forEach(child => {
+      if(child.content.name !== newContent.name) child.isSelected = false;
+    });
   }
 
   dummyContent: Content[] = [

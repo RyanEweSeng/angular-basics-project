@@ -1,10 +1,15 @@
 <div class="app-container">
-  <header class="title" [ngStyle]="getTitleStyle()">Angular Basics Practice</header>
-  <div class="content-container">
+  <div class="list-container">
+    <h1>List</h1>
     <app-content-box
       *ngFor="let content of dummyContent"
       [content]="content"
-      (emitColorUpdate)="handleColorUpdate($event)"
+      (emitContentChange)="handleContentChange($event)"
+    />
+  </div>
+  <div class="content-container">
+    <app-extended
+      [content]="currContent"
     />
   </div>
 </div>

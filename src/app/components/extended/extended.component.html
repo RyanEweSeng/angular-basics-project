@@ -1,0 +1,7 @@
+<div class="extended-content-item">
+  <h2>{{ content.name }}</h2>
+  <p>{{ content.text }}</p>
+  <div class="btn-container">
+    <button *ngIf="content?.name?.length">Save</button>
+  </div>
+</div>
